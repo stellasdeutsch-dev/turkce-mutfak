@@ -651,6 +651,22 @@ section[id], #resources, #final { scroll-margin-top: 70px; }
 .post.in .coda::before { content: ""; position: absolute; left: 0; top: -1px; height: 2px; width: 100%; background: var(--blue); transform: scaleX(0); transform-origin: 0; animation: line 1.2s var(--ease) .5s forwards; }
 @keyframes line { to { transform: scaleX(1); } }
 
+/* --- Казахстан: покупка через WhatsApp --- */
+.kz { display: grid; grid-template-columns: auto 1fr; gap: 6px 12px; align-items: center; margin: 6px 0 4px; padding: 14px; border-radius: 14px; background: #E7F8EE; box-shadow: inset 0 0 0 1.5px rgba(37,211,102,.35); }
+.kz-flag { font-size: 30px; line-height: 1; grid-row: span 2; align-self: start; }
+.kz-txt b { display: block; font: 800 17px/1.2 var(--disp); letter-spacing: -.02em; }
+.kz-txt small { display: block; font-size: 13.5px; color: var(--ink2); margin-top: 2px; }
+.kz-btn { grid-column: 2; justify-self: start; display: inline-flex; align-items: center; gap: 8px; min-height: 42px; padding: 0 16px; border-radius: 10px; background: #25D366; color: #fff; text-decoration: none; font: 800 14px var(--body); transition: transform .3s var(--spring), box-shadow .3s; box-shadow: 0 10px 20px -12px rgba(37,211,102,.9); }
+.kz-btn svg { width: 20px; height: 20px; fill: currentColor; }
+.kz-btn:hover { transform: translateY(-2px); }
+.kz-inline { color: #128C4A; font-weight: 700; text-decoration: none; white-space: nowrap; }
+.sticky-cta > span:first-child { min-width: 0; }
+.sticky-cta > span:first-child b { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: 14px; }
+.sticky-btns { display: flex; gap: 6px; align-items: center; flex: none; }
+.sticky-wa { position: relative; width: 44px; height: 44px; border-radius: 10px; background: #25D366; color: #fff; display: grid; place-items: center; }
+.sticky-wa svg { width: 22px; height: 22px; fill: currentColor; }
+.sticky-wa i { position: absolute; top: -6px; right: -6px; font: 800 9px/1 var(--body); font-style: normal; background: #fff; color: var(--ink); padding: 3px 4px; border-radius: 5px; box-shadow: 0 2px 6px rgba(0,0,0,.25); }
+
 /* ============ планшет / десктоп ============ */
 @media (min-width: 720px) {
   .wrap { padding: 0 28px; }

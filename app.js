@@ -176,7 +176,7 @@
       const show = y > mapSec.offsetTop + 200 && !finalVisible;
       sticky.classList.toggle('show', show);
       sticky.setAttribute('aria-hidden', show ? 'false' : 'true');
-      $('a', sticky).tabIndex = show ? 0 : -1;
+      $$('a', sticky).forEach((l) => { l.tabIndex = show ? 0 : -1; });
     });
   }
   addEventListener('scroll', onScroll, { passive: true });
