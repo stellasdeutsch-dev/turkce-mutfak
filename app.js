@@ -583,7 +583,8 @@
     qm.innerHTML = `<div class="q-final"><p class="q-n">Результат</p><b class="big">${s}/${Q.length}</b><p class="q-t">${msg}</p>
       <p>Это была одна тема из 131. Дальше — больница, ресторан, дорога, банк. Разобраны так же.</p>
       <a class="pill lg" href="#platform">Посмотреть все темы <svg><use href="#arrow"/></svg></a>
-      <button class="pill lg light" id="qAgain">Пройти ещё раз</button></div>`;
+      <button class="pill lg light" id="qAgain">Пройти ещё раз</button>
+      <a class="kz-btn" href="https://wa.me/message/RCHLEOGGLZ5OC1" target="_blank" rel="noopener" data-cta="whatsapp-quiz"><svg><use href="#wa"/></svg> 🇰🇿 Купить через WhatsApp</a></div>`;
     $('#qAgain').addEventListener('click', () => { qs.i = 0; qs.ok = 0; qs.bad = 0; qStats(); renderQ(false); });
     if (s >= 6) confetti();
   }
