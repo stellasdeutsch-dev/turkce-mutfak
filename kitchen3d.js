@@ -42,11 +42,12 @@ scene.add(sun);
 const C = {
   wall: '#FBF6EA', floorA: '#F3EADB', floorB: '#FBF6EC', peach: '#F9B99A', peachL: '#FFD2BA',
   counter: '#FFFBED', yellow: '#FFD866', yellowL: '#FFE083', blue: '#1A8CFF', ink: '#1C1C1C',
-  steel: '#D5DAE0', steelD: '#9AA3AD', wood: '#E3B07A', woodD: '#C88D55', white: '#FFFFFF',
+  steel: '#E3E8EE', steelD: '#9AA3AD', wood: '#E3B07A', woodD: '#C88D55', white: '#FFFFFF',
   red: '#E0473B', copper: '#D2844A', tea: '#B4471F', bread: '#D99A52', enamel: '#FF9C7A'
 };
 const mat = (color, o = {}) => new THREE.MeshStandardMaterial({
-  color, roughness: o.r ?? 0.72, metalness: o.m ?? 0, transparent: !!o.t, opacity: o.t ?? 1,
+  // без карты окружения сильный металл выглядит чёрным — держим его «сатиновым»
+  color, roughness: o.m ? Math.max(o.r ?? 0.72, 0.38) : (o.r ?? 0.72), metalness: Math.min(o.m ?? 0, 0.3), transparent: !!o.t, opacity: o.t ?? 1,
   map: o.map || null, emissive: '#000000'
 });
 const rbox = (w, h, d, r = 0.035) => new RoundedBoxGeometry(w, h, d, 3, Math.min(r, w / 2, h / 2, d / 2));
@@ -647,3 +648,81 @@ function frame(now) {
 resize();
 applyCamera();
 loop();
+
+/* ---------- 3D-иконки предметов: рендерим каждый предмет отдельно в PNG ---------- */
+function thumbGroup(id) {
+  const rec = items.get(id);
+  if (id === 'tezgah') {
+    // кусок столешницы с тумбой вместо длинной полосы
+    const g = new THREE.Group();
+    mesh(new THREE.BoxGeometry(1.0, CT_Y, 0.6), mat(C.peach), 0, CT_Y / 2, 0, g);
+    mesh(rbox(0.9, CT_Y - 0.12, 0.03, 0.02), mat(C.peachL, { r: 0.6 }), 0, CT_Y / 2 + 0.03, 0.31, g);
+    mesh(rbox(1.1, 0.06, 0.7, 0.02), mat(C.counter, { r: 0.35 }), 0, CT_Y + 0.03, 0, g);
+    return g;
+  }
+  const src = id === 'dolap' ? rec.groups[rec.groups.length - 1] : rec.groups[0];
+  const g = src.clone(true);
+  g.position.set(0, 0, 0);
+  g.scale.setScalar(1);
+  if (id === 'evye') {
+    const m = items.get('musluk').groups[0].clone(true);
+    m.position.set(0, 0, -0.29);
+    g.add(m);
+  }
+  return g;
+}
+function heroGroup() {
+  const g = new THREE.Group();
+  const k = items.get('caydanlik').groups[0].clone(true); k.position.set(0, 0, 0);
+  const d = items.get('demlik').groups[0].clone(true); d.position.set(0, 0.27, 0);
+  const b = items.get('cay-bardagi').groups[0].clone(true); b.position.set(0.3, 0, 0.16); b.scale.setScalar(1.25);
+  g.add(k, d, b);
+  return g;
+}
+function renderThumbs() {
+  let r2;
+  try { r2 = new THREE.WebGLRenderer({ antialias: true, alpha: true, preserveDrawingBuffer: true }); } catch (e) { return; }
+  r2.outputColorSpace = THREE.SRGBColorSpace;
+  r2.setPixelRatio(1);
+  r2.setClearColor(0x000000, 0);
+  const s2 = new THREE.Scene();
+  s2.add(new THREE.HemisphereLight('#fffaf0', '#e6d3bd', 1.4));
+  const l2 = new THREE.DirectionalLight('#fff1dc', 1.8);
+  l2.position.set(3, 6, 5);
+  s2.add(l2);
+  const cam = new THREE.PerspectiveCamera(28, 1, 0.01, 100);
+  const box = new THREE.Box3(), tmpBox = new THREE.Box3(), c = new THREE.Vector3(), sz = new THREE.Vector3();
+  const dir = new THREE.Vector3(0.75, 0.62, 1).normalize();
+  const out = {};
+  const jobs = [['__hero', heroGroup, 640], ...WORDS.filter((w) => items.has(w.id)).map((w) => [w.id, () => thumbGroup(w.id), 220])];
+  let i = 0;
+  function one() {
+    if (i >= jobs.length) {
+      r2.dispose();
+      window.Kitchen3D.thumbs = out;
+      host.dispatchEvent(new CustomEvent('kitchen:thumbs', { detail: out }));
+      return;
+    }
+    const [id, make, px] = jobs[i++];
+    const g = make();
+    s2.add(g);
+    g.updateMatrixWorld(true);
+    box.makeEmpty();
+    g.traverse((o) => { if (o.isMesh && !o.userData.hitbox) { tmpBox.setFromObject(o); box.union(tmpBox); } });
+    box.getCenter(c); box.getSize(sz);
+    const rad = sz.length() / 2;
+    const dist = rad / Math.sin(THREE.MathUtils.degToRad(cam.fov / 2)) * 1.02;
+    cam.position.copy(c).addScaledVector(dir, dist);
+    cam.near = dist / 50; cam.far = dist * 4;
+    cam.updateProjectionMatrix();
+    cam.lookAt(c);
+    r2.setSize(px, px, false);
+    r2.render(s2, cam);
+    out[id] = r2.domElement.toDataURL('image/png');
+    s2.remove(g);
+    // по одной иконке за кадр — чтобы не подвешивать страницу
+    (window.requestIdleCallback || ((f) => setTimeout(f, 16)))(one);
+  }
+  one();
+}
+setTimeout(renderThumbs, 400);

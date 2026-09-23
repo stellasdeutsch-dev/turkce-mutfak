@@ -110,6 +110,18 @@ window.KITCHEN = {
     { id: "x-ocagi-kapat", tr: "Ocağı kapat." },
     { id: "x-tesekkur", tr: "Teşekkür ederim." },
     { id: "x-kolay-gelsin", tr: "Kolay gelsin!" },
-    { id: "x-nerede", tr: "nerede?" }
+    { id: "x-nerede", tr: "nerede?" },
+    { id: "x-demlige-koy", tr: "Çayı demliğe koy." },
+    { id: "x-demle-15", tr: "On beş dakika demle." },
+    { id: "x-bardaga-koy", tr: "Bardağa koy." },
+    { id: "x-tavsan-kani", tr: "Tavşan kanı." },
+    { id: "x-acik-mi-koyu-mu", tr: "Açık mı, koyu mu?" },
+    { id: "x-acik", tr: "Açık." },
+    { id: "x-koyu", tr: "Koyu." },
+    { id: "x-su-kaynadi", tr: "Su kaynadı!" },
+    { id: "x-menemen", tr: "menemen" },
+    { id: "x-simit", tr: "simit" },
+    { id: "x-lokum", tr: "lokum" },
+    { id: "x-kahvalti", tr: "kahvaltı" }
   ]
 };

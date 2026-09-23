@@ -234,6 +234,8 @@
     $('#kcExTr').textContent = w.ex[0];
     $('#kcExRu').textContent = w.ex[1];
     $('#kcN').textContent = w.n;
+    const th = THUMB(), img = $('#kcImg');
+    if (th && th[id]) { img.src = th[id]; img.classList.remove('ok'); void img.offsetWidth; img.classList.add('ok'); } else img.classList.remove('ok');
     kCard.classList.add('full');
     kCard.classList.remove('pop'); void kCard.offsetWidth; kCard.classList.add('pop');
     kitchen.classList.add('picked');
@@ -486,7 +488,7 @@
   });
 
   /* ================= ТЕСТ ================= */
-  const Q = [
+  const Q0 = [
     { say: 'buzdolabi', q: 'Что ты слышишь?', opts: ['холодильник', 'духовка', 'посудомойка', 'шкаф'], exp: 'buz — лёд, dolap — шкаф. Ледяной шкаф.' },
     { q: 'Тётя Айше принесла тебе менемен. Ты поел. Что сказать?', opts: ['Elinize sağlık!', 'Afiyet olsun!', 'Kolay gelsin!', 'Günaydın!'], exp: '«Здоровья вашим рукам» — тому, кто готовил. Afiyet olsun скажет тебе она.', after: 'elinize-saglik' },
     { q: '«Молоко в холодильнике» — как правильно?', opts: ['Süt buzdolabında.', 'Süt buzdolabıda.', 'Süt buzdolapta.', 'Süt buzdolabda.'], exp: 'buzdolabı уже с окончанием -ı, поэтому перед -da встаёт n: buzdolabı-n-da.', after: 's-sut-buzdolabi' },
@@ -496,6 +498,11 @@
     { say: 'davlumbaz', q: 'Что это за предмет?', opts: ['вытяжка', 'кастрюля', 'кран', 'турка'], exp: 'Davlumbaz — вытяжка. Звучит как заклинание, работает как вытяжка.' },
     { q: 'Эмре кричит: «Süt taştı!» Что случилось?', opts: ['Молоко убежало', 'Молоко закончилось', 'Молоко скисло', 'Молоко в шкафу'], exp: 'taşmak — переливаться через край. Беги выключать ocak.', after: 'sut-tasti' }
   ];
+  // два вопроса «найди картинку» — в них видны 3D-иконки предметов
+  const Q = [...Q0];
+  Q.splice(2, 0, { pick: true, say: 'tencere', q: 'Нажми на tencere', opts: ['tencere', 'tava', 'cezve', 'demlik'], exp: 'Tencere — кастрюля. Tava — сковорода, cezve — турка, demlik — заварник.' });
+  Q.splice(6, 0, { pick: true, say: 'kesme-tahtasi', q: 'А где kesme tahtası?', opts: ['kesme-tahtasi', 'tabak', 'bicak', 'tezgah'], exp: 'kesme tahtası — «доска для резания». Kesmek — резать.' });
+  const THUMB = () => (window.Kitchen3D && window.Kitchen3D.thumbs) || null;
   const qm = $('#quizMain');
   const qs = { i: 0, ok: 0, bad: 0 };
   function qStats() {
@@ -509,8 +516,10 @@
   }
   function renderQ(auto) {
     const q = Q[qs.i];
+    if (q.pick) return renderPick(q, auto);
     const correct = q.opts[0];
     const opts = shuffle(q.opts);
+    qm.dataset.pick = '';
     qm.innerHTML = `<p class="q-n">Вопрос ${qs.i + 1} из ${Q.length}</p>
       <h3 class="q-t">${q.say ? `<button class="say-inline big" data-say="${q.say}">▶ слушать</button><br>` : ''}${esc(q.q)}</h3>
       <div class="q-opts">${opts.map((o) => `<button class="q-opt" data-v="${esc(o)}"><span>${esc(o)}</span><span class="mk"></span></button>`).join('')}</div>`;
@@ -534,6 +543,39 @@
       if (q.after) say(q.after);
     }));
     if (auto && q.say) say(q.say);
+  }
+  function answered(ok, q) {
+    if (ok) qs.ok++; else qs.bad++;
+    qStats();
+    const exp = document.createElement('p');
+    exp.className = 'q-exp';
+    exp.innerHTML = `<b>${ok ? 'Doğru!' : 'Почти.'}</b> ${esc(q.exp)}`;
+    qm.appendChild(exp);
+    const nx = document.createElement('button');
+    nx.className = 'pill lg q-next';
+    nx.textContent = qs.i + 1 < Q.length ? 'Дальше →' : 'Результат →';
+    nx.addEventListener('click', () => { qs.i++; qs.i < Q.length ? renderQ(true) : renderFinal(); });
+    qm.appendChild(nx);
+  }
+  function renderPick(q, auto) {
+    const th = THUMB();
+    const opts = shuffle(q.opts);
+    qm.innerHTML = `<p class="q-n">Вопрос ${qs.i + 1} из ${Q.length}</p>
+      <h3 class="q-t"><button class="say-inline big" data-say="${q.say}">▶ ${esc(WORD[q.say].tr)}</button><br>${esc(q.q)}</h3>
+      <div class="q-pick">${opts.map((id) => `<button class="q-tile" data-v="${id}">${th && th[id] ? `<img src="${th[id]}" alt="">` : `<span class="emo">${ICON[id] || '•'}</span>`}<span></span></button>`).join('')}</div>`;
+    qm.dataset.pick = '1';
+    $$('.q-tile', qm).forEach((b) => b.addEventListener('click', () => {
+      const ok = b.dataset.v === q.opts[0];
+      $$('.q-tile', qm).forEach((x) => {
+        x.disabled = true;
+        $('span:last-child', x).textContent = WORD[x.dataset.v].tr;
+        if (x.dataset.v === q.opts[0]) x.classList.add('ok');
+      });
+      if (!ok) b.classList.add('bad');
+      say(b.dataset.v);
+      answered(ok, q);
+    }));
+    if (auto) say(q.say);
   }
   function renderFinal() {
     const s = qs.ok;
@@ -589,6 +631,206 @@
   calc();
 
   renderHeard(false);
+
+  /* ================= V2: ВИЗУАЛ И АНИМАЦИИ ================= */
+
+  // 3D-иконки из kitchen3d.js
+  function applyThumbs(th) {
+    if (!th) return;
+    const hero = $('#hero3d');
+    if (th.__hero && !hero.src) { hero.onload = () => hero.classList.add('ready'); hero.src = th.__hero; }
+    $$('.w').forEach((w) => {
+      const id = w.dataset.id;
+      const ico = $('.ico', w);
+      if (th[id] && ico) { const im = new Image(); im.className = 'thumb'; im.alt = ''; im.src = th[id]; ico.replaceWith(im); }
+    });
+    if (cardId && th[cardId]) { $('#kcImg').src = th[cardId]; $('#kcImg').classList.add('ok'); }
+    if (qm.dataset.pick === '1') $$('.q-tile', qm).forEach((t) => {
+      const e = $('.emo', t);
+      if (e && th[t.dataset.v]) { const im = new Image(); im.src = th[t.dataset.v]; im.alt = ''; e.replaceWith(im); }
+    });
+  }
+  kitchen.addEventListener('kitchen:thumbs', (e) => applyThumbs(e.detail));
+  if (THUMB()) applyThumbs(THUMB());
+
+  // заголовки выезжают по словам
+  $$('.h2, .h-final').forEach((h) => {
+    if (h.querySelector('button')) return;
+    h.setAttribute('aria-label', h.textContent.replace(/\s+/g, ' ').trim());
+    let n = 0;
+    [...h.childNodes].forEach((node) => {
+      if (node.nodeType !== 3) return;
+      const frag = document.createDocumentFragment();
+      node.textContent.split(/(\s+)/).forEach((part) => {
+        if (!part) return;
+        if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(' ')); return; }
+        const w = document.createElement('span');
+        w.className = 'sw';
+        w.setAttribute('aria-hidden', 'true');
+        w.innerHTML = `<i style="--i:${n++}">${esc(part)}</i>`;
+        frag.appendChild(w);
+      });
+      node.replaceWith(frag);
+    });
+  });
+
+  // «сейчас звучит»
+  const RU = {};
+  K.words.forEach((w) => { RU[w.id] = w.ru; RU[w.id + '-ex'] = w.ex[1]; });
+  K.phrases.forEach((p) => { RU[p.id] = p.ru; });
+  K.lik.forEach((l) => { RU[l.id] = l.ru; });
+  K.compounds.forEach((c) => { RU[c.id] = c.ru; });
+  Object.assign(RU, { 'x-demlige-koy': 'засыпь заварку в demlik', 'x-demle-15': 'настаивай 15 минут', 'x-bardaga-koy': 'наливай в стаканчик', 'x-tavsan-kani': '«заячья кровь» — идеальный цвет', 'x-acik-mi-koyu-mu': 'светлый или крепкий?', 'x-acik': 'светлый', 'x-koyu': 'крепкий', 'x-mutfak': 'кухня', 'x-kolay': 'турецкий на кухне? легко', 'x-cay': 'чай', 'x-simit': 'бублик с кунжутом', 'x-menemen': 'яичница с помидорами', 'x-lokum': 'рахат-лукум', 'x-kahvalti': 'завтрак', 'x-su-kaynadi': 'вода вскипела!' });
+  const now = $('#now');
+  let nowT;
+  document.addEventListener('say:start', (e) => {
+    const id = e.detail.id;
+    clearTimeout(nowT);
+    $('#nowTr').textContent = TEXT[id] || id;
+    $('#nowRu').textContent = RU[id] || '';
+    now.classList.add('show');
+  });
+  document.addEventListener('say:end', () => { clearTimeout(nowT); nowT = setTimeout(() => now.classList.remove('show'), 700); });
+
+  // бегущие строки: скорость зависит от скорости скролла
+  const tickers = [];
+  function buildRow(row, items) {
+    const html = items.map((it) => `<button class="tk" data-say="${it.id}">${esc(it.tr)}<small>${esc(it.ru)}</small></button>`).join('');
+    row.innerHTML = html + html;
+    tickers.push({ row, dir: +row.dataset.dir, x: 0, w: 0 });
+  }
+  const wr = shuffle(K.words);
+  const rows1 = $$('#ticker1 .tk-row');
+  buildRow(rows1[0], wr.slice(0, 13));
+  buildRow(rows1[1], [...wr.slice(13), { id: 'x-simit', tr: 'simit', ru: 'бублик' }, { id: 'x-menemen', tr: 'menemen', ru: 'яичница' }]);
+  buildRow($('#ticker2 .tk-row'), K.phrases);
+  let lastY = scrollY, vel = 0, tPrev = performance.now();
+  function tick(t) {
+    const dt = Math.min(0.05, (t - tPrev) / 1000); tPrev = t;
+    const y = scrollY; vel = vel * 0.9 + (y - lastY) * 0.1; lastY = y;
+    tickers.forEach((k) => {
+      if (!k.w) k.w = k.row.scrollWidth / 2;
+      const sp = reduce ? 0 : (40 + Math.min(900, Math.abs(vel) * 60)) * k.dir * (vel < -0.5 ? -1 : 1);
+      k.x -= sp * dt;
+      if (k.x <= -k.w) k.x += k.w; if (k.x > 0) k.x -= k.w;
+      k.row.style.transform = `translate3d(${k.x}px,0,0)`;
+    });
+    requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+  addEventListener('resize', () => tickers.forEach((k) => { k.w = 0; }));
+
+  // чайный ритуал: сцена крутится от скролла
+  const track = $('#teaTrack');
+  const T = {
+    flame: $('#tFlame'), bub: $('#tBubbles'), kettle: $('#tKettle'), dem: $('#tDemlik'), lid: $('#tLid'),
+    leaves: $$('#tLeaves ellipse'), arc: $('#tTimerArc'), ttxt: $('#tTimerTxt'), timer: $('#tTimer'),
+    steam: $('#tSteam1'), stream: $('#tStream'), fill: $('#tFill'), deg: $('#tDegTxt'), degG: $('#tDeg'),
+    steps: $$('.tea-step'), dots: $$('.tea-dots i')
+  };
+  const cl = (v, a = 0, b = 1) => Math.max(a, Math.min(b, v));
+  const seg = (p, a, b) => cl((p - a) / (b - a));
+  const mix = (c1, c2, t) => {
+    const h = (c) => [1, 3, 5].map((i) => parseInt(c.slice(i, i + 2), 16));
+    const a = h(c1), b = h(c2);
+    return `rgb(${a.map((v, i) => Math.round(v + (b[i] - v) * t)).join(',')})`;
+  };
+  let teaStep = -1;
+  function teaScene(p) {
+    const s1 = seg(p, 0, 0.25), s2 = seg(p, 0.25, 0.5), s3 = seg(p, 0.5, 0.75), s4 = seg(p, 0.75, 0.98);
+    // 1 — огонь и кипение
+    const heat = cl(s1 * 1.4) * (1 - s4 * 0.6);
+    T.flame.style.transform = `scaleY(${0.3 + heat * 0.9})`;
+    T.flame.style.opacity = 0.3 + heat * 0.7;
+    T.bub.classList.toggle('on', s1 > 0.55 && s4 < 0.3);
+    T.deg.textContent = Math.round(20 + 80 * s1) + '°';
+    T.degG.style.opacity = s2 > 0.9 ? 0 : 1;
+    const jig = s1 > 0.6 && s1 < 1 && !reduce ? Math.sin(performance.now() / 40) * 1.2 : 0;
+    T.kettle.setAttribute('transform', `translate(${jig} 0)`);
+    // 2 — крышка и чаинки
+    const lidUp = Math.sin(Math.PI * s2);
+    T.lid.setAttribute('transform', `translate(${lidUp * 10} ${-lidUp * 34}) rotate(${lidUp * 24} 150 200)`);
+    T.leaves.forEach((l, i) => {
+      const k = cl((s2 - i * 0.06) * 1.8);
+      l.setAttribute('transform', `translate(0 ${k * 190})`);
+      l.style.opacity = s2 > 0 && k < 1 ? 1 : 0;
+    });
+    // 3 — таймер и пар
+    T.timer.style.opacity = s3 > 0 || s4 > 0 ? 1 : 0.25;
+    T.arc.style.strokeDashoffset = 188.5 * (1 - s3);
+    T.ttxt.textContent = Math.round(15 * s3) + "'";
+    T.steam.style.opacity = s3 > 0.05 && s4 < 0.2 ? 1 : 0;
+    // 4 — наливаем
+    const tilt = cl(s4 * 1.6);
+    const lift = Math.sin(Math.PI * cl(s4 * 1.25)) * 36;
+    T.dem.setAttribute('transform', `translate(${90 * tilt} ${10 * tilt - lift}) rotate(${40 * tilt} 150 224)`);
+    const pour = seg(s4, 0.45, 1);
+    const level = 62 * pour;
+    T.fill.setAttribute('y', 366 - level);
+    T.fill.setAttribute('height', level);
+    T.fill.style.fill = mix('#5A1A0A', '#B4471F', seg(pour, 0.4, 1));
+    T.stream.style.opacity = s4 > 0.45 && s4 < 0.97 ? 1 : 0;
+    T.stream.setAttribute('y2', 366 - level);
+    // шаги
+    const step = p < 0.25 ? 0 : p < 0.5 ? 1 : p < 0.75 ? 2 : 3;
+    if (step !== teaStep) { teaStep = step; T.steps.forEach((st, i) => st.classList.toggle('on', i === step)); }
+    T.dots.forEach((d, i) => d.style.setProperty('--f', cl(p * 4 - i).toFixed(3)));
+  }
+  let teaVisible = false;
+  new IntersectionObserver(([e]) => { teaVisible = e.isIntersecting; }, { rootMargin: '100px' }).observe(track);
+  (function teaLoop() {
+    if (teaVisible) {
+      const r = track.getBoundingClientRect();
+      const p = cl(-r.top / Math.max(1, r.height - innerHeight));
+      teaScene(p);
+    }
+    requestAnimationFrame(teaLoop);
+  })();
+  teaScene(0);
+
+  // рябь по нажатию
+  document.addEventListener('pointerdown', (e) => {
+    const b = e.target.closest('.pill, .big-btn, .chip, .q-opt, .q-tile, .shade, .w, .ph');
+    if (!b || reduce) return;
+    const r = b.getBoundingClientRect();
+    const d = Math.max(r.width, r.height) * 2.2;
+    const s = document.createElement('span');
+    s.className = 'rp';
+    s.style.cssText = `width:${d}px;height:${d}px;left:${e.clientX - r.left - d / 2}px;top:${e.clientY - r.top - d / 2}px`;
+    b.appendChild(s);
+    setTimeout(() => s.remove(), 650);
+  });
+
+  // магнитики и 3D-чайник следуют за курсором
+  const heroEl = $('.hero');
+  if (!reduce && matchMedia('(pointer: fine)').matches) {
+    heroEl.addEventListener('pointermove', (e) => {
+      const x = e.clientX / innerWidth - 0.5, y = e.clientY / innerHeight - 0.5;
+      $$('.magnet', heroEl).forEach((m, i) => { m.style.setProperty('--px', `${x * (14 + i * 6)}px`); m.style.setProperty('--py', `${y * (14 + i * 6)}px`); });
+      $('.hero-3d-wrap').style.translate = `${x * -22}px ${y * -16}px`;
+    });
+    // «магнитные» большие кнопки
+    $$('.pill.lg, .big-btn').forEach((b) => {
+      b.addEventListener('pointermove', (e) => {
+        const r = b.getBoundingClientRect();
+        b.style.translate = `${(e.clientX - r.left - r.width / 2) * 0.12}px ${(e.clientY - r.top - r.height / 2) * 0.25}px`;
+      });
+      b.addEventListener('pointerleave', () => { b.style.translate = ''; });
+    });
+  }
+
+  // телефоны: coverflow при листании
+  function cover() {
+    const c = phones.getBoundingClientRect();
+    const mid = c.left + c.width / 2;
+    $$('.phone', phones).forEach((ph) => {
+      const r = ph.getBoundingClientRect();
+      const off = cl(((r.left + r.width / 2) - mid) / c.width * 2, -1.5, 1.5);
+      ph.style.transform = `perspective(900px) rotateY(${-off * 28}deg) scale(${1 - Math.abs(off) * 0.12}) translateZ(${-Math.abs(off) * 40}px)`;
+      ph.style.zIndex = 10 - Math.round(Math.abs(off) * 5);
+    });
+  }
+  if (!reduce) { phones.addEventListener('scroll', () => requestAnimationFrame(cover), { passive: true }); addEventListener('resize', cover); cover(); }
 
   /* ================= КОНФЕТТИ ================= */
   const cv = $('#confetti');

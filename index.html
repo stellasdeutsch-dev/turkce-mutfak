@@ -38,7 +38,7 @@
   <div class="wrap nav-in">
     <a class="logo" href="#top" aria-label="Alterna — наверх"><svg><use href="#mark"/></svg><b>Alterna</b></a>
     <nav class="nav-links" aria-label="Разделы">
-      <a href="#map">3D-кухня</a><a href="#story">Истории</a><a href="#grammar">Конструктор</a><a href="#phrases">Фразы</a><a href="#quiz">Тест</a><a href="#platform">Платформа</a>
+      <a href="#map">3D-кухня</a><a href="#story">Истории</a><a href="#tea">Чай</a><a href="#grammar">Конструктор</a><a href="#phrases">Фразы</a><a href="#quiz">Тест</a><a href="#platform">Платформа</a>
     </nav>
     <a class="pill" href="https://app.lava.top/products/2cdbb9f8-e65b-443e-8d2c-4fea4c121e41" target="_blank" rel="noopener" data-cta="nav">Доступ · $30</a>
   </div>
@@ -66,6 +66,11 @@
     </div>
 
     <div class="hero-cards" aria-hidden="false">
+      <div class="hero-3d-wrap" aria-hidden="true"><img class="hero-3d" id="hero3d" alt=""><i class="hero-3d-shadow"></i></div>
+      <button class="magnet m1" data-say="x-cay">çay</button>
+      <button class="magnet m2" data-say="ocak">ocak</button>
+      <button class="magnet m3" data-say="x-simit">simit</button>
+      <button class="magnet m4" data-say="tava">tava</button>
       <div class="hc hc-ring tilt" data-r>
         <svg class="ring" viewBox="0 0 80 80"><circle cx="40" cy="40" r="33"/><circle class="arc" cx="40" cy="40" r="33"/></svg>
         <svg class="mk"><use href="#mark"/></svg>
@@ -101,6 +106,11 @@
     <div class="banner-foot"><span class="logo sm"><svg><use href="#mark"/></svg><b>Alterna</b></span><span class="caps">Timur · A0 → C1</span></div>
   </div>
 </section>
+
+<div class="ticker" id="ticker1" aria-label="Кухонные слова — нажми, чтобы услышать">
+  <div class="tk-row" data-dir="-1"></div>
+  <div class="tk-row alt" data-dir="1"></div>
+</div>
 
 <!-- ============ STORY 1: ÇAYDANLIK ============ -->
 <section class="sec" id="story">
@@ -174,6 +184,117 @@
   </div>
 </section>
 
+<!-- ============ ÇAY RİTÜELİ (скролл-сцена) ============ -->
+<section class="sec tea" id="tea">
+  <div class="wrap">
+    <p class="eyebrow" data-r>Ритуал · 4 шага · листай</p>
+    <h2 class="display h2" data-r>Как Эмре заваривает чай</h2>
+    <div class="dan-lines" data-r>
+      <p>Эмре посмотрел на мой заварочник. Вздохнул.</p>
+      <p>Говорит, смотри. Показываю один раз.</p>
+    </div>
+  </div>
+  <div class="tea-track" id="teaTrack">
+    <div class="tea-stage">
+      <div class="wrap tea-grid">
+        <div class="tea-art">
+          <img class="tea-star" src="media/star-peach.webp" alt="" aria-hidden="true" loading="lazy">
+          <svg class="tea-svg" viewBox="0 0 360 420" role="img" aria-label="Анимация: заваривание турецкого чая">
+            <defs>
+              <clipPath id="glassClip"><path d="M262 300h46l-9 34 9 32h-46l9-32z"/></clipPath>
+            </defs>
+            <!-- таймер -->
+            <g class="t-timer" id="tTimer">
+              <circle cx="300" cy="88" r="30" class="tt-bg"/>
+              <circle cx="300" cy="88" r="30" class="tt-arc" id="tTimerArc" transform="rotate(-90 300 88)"/>
+              <text x="300" y="94" text-anchor="middle" id="tTimerTxt">0'</text>
+              <text x="300" y="134" text-anchor="middle" class="tt-cap">dakika</text>
+            </g>
+            <!-- градусник -->
+            <g class="t-deg" id="tDeg"><rect x="18" y="60" width="74" height="30" rx="15"/><text x="55" y="80" text-anchor="middle" id="tDegTxt">20°</text></g>
+            <!-- пар -->
+            <g class="t-steam" id="tSteam1"><path d="M250 262c-12-14 12-22 0-38"/><path d="M262 256c-12-14 12-22 0-38"/></g>
+            <!-- огонь и плита -->
+            <rect x="60" y="370" width="180" height="16" rx="8" class="t-stove"/>
+            <!-- çaydanlık -->
+            <g id="tKettle">
+              <path class="t-handle" d="M104 262c0-26 92-26 92 0"/>
+              <path class="t-body" d="M90 300c0-34 26-52 60-52s60 18 60 52v48c0 12-8 20-20 20H110c-12 0-20-8-20-20z"/>
+              <path class="t-body" d="M206 296l40-22 5 7-40 32z"/>
+              <g id="tBubbles" class="t-bubbles"><circle cx="120" cy="340" r="4"/><circle cx="150" cy="350" r="3"/><circle cx="178" cy="338" r="5"/><circle cx="136" cy="330" r="3"/><circle cx="165" cy="322" r="4"/></g>
+              <text x="150" y="326" text-anchor="middle" class="t-lbl">çaydanlık</text>
+            </g>
+            <g id="tFlame" class="t-flame"><path d="M98 370c2-10 8-14 8-22 5 7 8 13 6 22z"/><path d="M190 370c2-10 8-14 8-22 5 7 8 13 6 22z"/><path d="M84 370c1-6 5-9 5-14 3 5 5 9 4 14z"/><path d="M206 370c1-6 5-9 5-14 3 5 5 9 4 14z"/></g>
+            <!-- чаинки -->
+            <g id="tLeaves" class="t-leaves">
+              <ellipse cx="138" cy="40" rx="4" ry="2.4"/><ellipse cx="150" cy="30" rx="4" ry="2.4"/><ellipse cx="160" cy="46" rx="4" ry="2.4"/>
+              <ellipse cx="145" cy="56" rx="4" ry="2.4"/><ellipse cx="156" cy="20" rx="4" ry="2.4"/><ellipse cx="142" cy="14" rx="4" ry="2.4"/>
+            </g>
+            <!-- demlik -->
+            <g id="tDemlik">
+              <path class="t-handle thin" d="M112 214c-18 0-22 28 2 32"/>
+              <path class="t-body light" d="M112 236c0-24 17-40 38-40s38 16 38 40l-6 16H118z"/>
+              <path class="t-body light" d="M184 226l30-18 4 6-26 24z"/>
+              <g id="tLid"><path class="t-body light" d="M124 204q26-16 52 0z"/><circle cx="150" cy="192" r="7" class="t-knob"/></g>
+              <text x="150" y="234" text-anchor="middle" class="t-lbl">demlik</text>
+            </g>
+            <!-- струя -->
+            <line id="tStream" x1="286" y1="262" x2="286" y2="366" class="t-stream"/>
+            <!-- стаканчик -->
+            <g id="tGlass">
+              <rect x="248" y="366" width="76" height="9" rx="4.5" class="t-saucer"/>
+              <rect id="tFill" x="250" y="366" width="70" height="0" clip-path="url(#glassClip)" class="t-fill"/>
+              <path d="M262 300h46l-9 34 9 32h-46l9-32z" class="t-glass"/>
+            </g>
+          </svg>
+        </div>
+        <div class="tea-steps" id="teaSteps">
+          <div class="tea-dots"><i></i><i></i><i></i><i></i></div>
+          <article class="tea-step on">
+            <span class="ts-n">01</span>
+            <button class="ts-tr" data-say="suyu-kaynat">Suyu kaynat.</button>
+            <p class="ts-ru">Вскипяти воду. В нижнем этаже.</p>
+            <p class="ts-dan">Нижний этаж — для воды. Я это теперь знаю.</p>
+          </article>
+          <article class="tea-step">
+            <span class="ts-n">02</span>
+            <button class="ts-tr" data-say="x-demlige-koy">Çayı demliğe koy.</button>
+            <p class="ts-ru">Засыпь заварку в demlik и залей кипятком снизу.</p>
+            <p class="ts-dan">Заварка — наверх. Воду — снизу. Не наоборот.</p>
+          </article>
+          <article class="tea-step">
+            <span class="ts-n">03</span>
+            <button class="ts-tr" data-say="x-demle-15">On beş dakika demle.</button>
+            <p class="ts-ru">Пусть настаивается пятнадцать минут на слабом огне.</p>
+            <p class="ts-dan">Пятнадцать. Не десять. Эмре стоял с телефоном и проверял.</p>
+          </article>
+          <article class="tea-step">
+            <span class="ts-n">04</span>
+            <button class="ts-tr" data-say="x-bardaga-koy">Bardağa koy.</button>
+            <p class="ts-ru">Налей в стаканчик: сначала заварку, потом кипяток.</p>
+            <p class="ts-dan">Цвет — <button class="say-inline" data-say="x-tavsan-kani">tavşan kanı</button>, «заячья кровь». Звучит жутко. Выглядит красиво.</p>
+          </article>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="shades" data-r>
+      <div class="shades-copy">
+        <p class="eyebrow">Тебе наливают чай и спрашивают</p>
+        <h3 class="h3"><button class="say-inline" data-say="x-acik-mi-koyu-mu">Açık mı, koyu mu?</button></h3>
+        <p>Светлый или крепкий? Нажми на стаканчик — услышишь ответ. Эмре пьёт koyu. Я пью tavşan kanı. Тётя Айше пьёт açık и осуждает нас обоих.</p>
+      </div>
+      <div class="shades-row">
+        <button class="shade" data-say="x-acik" style="--tea:#E3923F"><svg viewBox="0 0 60 80"><path class="tea" d="M16 22h28l-6 20 6 22H16l6-22z"/><path class="gl" d="M14 12h32l-7 28 7 26H14l7-26z"/><rect class="saucer" x="4" y="68" width="52" height="7" rx="3.5"/></svg><b>açık</b><small>светлый</small></button>
+        <button class="shade best" data-say="x-tavsan-kani" style="--tea:#B4471F"><svg viewBox="0 0 60 80"><path class="tea" d="M16 22h28l-6 20 6 22H16l6-22z"/><path class="gl" d="M14 12h32l-7 28 7 26H14l7-26z"/><rect class="saucer" x="4" y="68" width="52" height="7" rx="3.5"/></svg><b>tavşan kanı</b><small>как надо</small></button>
+        <button class="shade" data-say="x-koyu" style="--tea:#5A1A0A"><svg viewBox="0 0 60 80"><path class="tea" d="M16 22h28l-6 20 6 22H16l6-22z"/><path class="gl" d="M14 12h32l-7 28 7 26H14l7-26z"/><rect class="saucer" x="4" y="68" width="52" height="7" rx="3.5"/></svg><b>koyu</b><small>крепкий</small></button>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ============ 3D MAP ============ -->
 <section class="sec" id="map">
   <div class="wrap">
@@ -209,7 +330,8 @@
         </div>
         <div class="kc-full">
           <div class="kc-row">
-            <div>
+            <img class="kc-img" id="kcImg" alt="">
+            <div class="kc-txt">
               <p class="kc-ru" id="kcRu">холодильник</p>
               <h3 class="kc-tr" id="kcTr">buzdolabı</h3>
               <p class="kc-pr">[<span id="kcPr">буздолабы</span>]</p>
@@ -378,6 +500,10 @@
     </div>
   </div>
 </section>
+
+<div class="ticker phr" id="ticker2" aria-label="Кухонные фразы — нажми, чтобы услышать">
+  <div class="tk-row" data-dir="1"></div>
+</div>
 
 <!-- ============ PLATFORM (ADS) ============ -->
 <section class="sec platform" id="platform">
@@ -566,8 +692,8 @@
           <div class="dash-main">
             <b class="dash-h">Alterna Timur<br>A0 → C1</b>
             <div class="dash-cells">
-              <span class="y"><b>128</b>гайдов</span><span class="p"><b>131</b>тема</span><span class="b"><b>109</b>ресурсов</span>
-              <span class="p"><b>32</b>экзамены</span><span class="b"><b>36</b>работа</span><span class="y"><b>1716</b>материалов</span>
+              <span class="y"><b data-count="128">0</b>гайдов</span><span class="p"><b data-count="131">0</b>тема</span><span class="b"><b data-count="109">0</b>ресурсов</span>
+              <span class="p"><b data-count="32">0</b>экзамены</span><span class="b"><b data-count="36">0</b>работа</span><span class="y"><b data-count="1716">0</b>материалов</span>
             </div>
           </div>
         </div>
@@ -598,6 +724,7 @@
   <a class="pill y" href="https://app.lava.top/products/2cdbb9f8-e65b-443e-8d2c-4fea4c121e41" target="_blank" rel="noopener" data-cta="sticky" tabindex="-1">Получить</a>
 </div>
 
+<div class="now" id="now" aria-hidden="true"><span class="now-bars"><i></i><i></i><i></i><i></i></span><b id="nowTr"></b><small id="nowRu"></small></div>
 <canvas id="confetti" aria-hidden="true"></canvas>
 
 <script src="data.js"></script>
