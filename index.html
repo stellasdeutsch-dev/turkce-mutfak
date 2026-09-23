@@ -1,0 +1,607 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Турецкий на кухне — Alterna</title>
+<meta name="description" content="26 кухонных слов по-турецки на 3D-карте с озвучкой. Истории, конструкторы слов, фразы, тест. И платформа Alterna Timur A0→C1.">
+<meta property="og:title" content="Турецкий на кухне. Смешно просто.">
+<meta property="og:description" content="3D-кухня с озвучкой: нажми на холодильник — услышишь buzdolabı. Плюс истории, тест и платформа Alterna A0→C1.">
+<meta property="og:image" content="https://stellasdeutsch-dev.github.io/turkce-mutfak/media/og.jpg">
+<meta name="theme-color" content="#F6F1E4">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='10' fill='%231A8CFF'/%3E%3Cpath fill='%23fff' d='M21 9h11v11l-3.8-3.8-7.4 7.4-3.4-3.4 7.4-7.4z'/%3E%3Cpath fill='%23fff' d='M17 11.5a10 10 0 1 0 12 12.2 12 12 0 0 1-12-12.2z'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script type="importmap">
+{ "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+} }
+</script>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="mark" viewBox="0 0 40 40">
+    <path d="M21 5h14v14l-4.8-4.8-9.2 9.2-4.4-4.4 9.2-9.2z"/>
+    <path d="M16 8.5a13 13 0 1 0 15.6 16.1A15.6 15.6 0 0 1 16 8.5z"/>
+  </symbol>
+  <symbol id="play" viewBox="0 0 24 24"><path d="M4 9h3l5-4v14l-5-4H4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18 6a8.5 8.5 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+  <symbol id="arrow" viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="square"/></symbol>
+</svg>
+
+<div class="read-bar" aria-hidden="true"><i></i></div>
+
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="logo" href="#top" aria-label="Alterna — наверх"><svg><use href="#mark"/></svg><b>Alterna</b></a>
+    <nav class="nav-links" aria-label="Разделы">
+      <a href="#map">3D-кухня</a><a href="#story">Истории</a><a href="#grammar">Конструктор</a><a href="#phrases">Фразы</a><a href="#quiz">Тест</a><a href="#platform">Платформа</a>
+    </nav>
+    <a class="pill" href="https://app.lava.top/products/2cdbb9f8-e65b-443e-8d2c-4fea4c121e41" target="_blank" rel="noopener" data-cta="nav">Доступ · $30</a>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <img class="blob b1" src="media/star-cream.webp" alt="" aria-hidden="true">
+  <div class="wrap hero-in">
+    <div class="hero-copy">
+      <p class="eyebrow" data-r><span class="dot"></span> Лексика · A1 · <button class="say-inline" data-say="x-mutfak">mutfak</button> — кухня</p>
+      <h1 class="display h-hero" aria-label="Турецкий на кухне. Смешно просто.">
+        <span class="ln"><span>Турецкий</span></span>
+        <span class="ln"><span>на кухне.</span></span>
+        <span class="ln"><span>Смешно</span></span>
+        <span class="ln"><span>просто.</span></span>
+      </h1>
+      <p class="lead" data-r>Заварить чай, не обжечься о стаканчик и правильно сказать спасибо хозяйке. <span class="mute">(Этому здесь и учим.)</span></p>
+      <div class="hero-btns" data-r>
+        <a class="pill lg" href="#map">Открыть 3D-кухню <svg><use href="#arrow"/></svg></a>
+        <button class="ghost" data-say="x-kolay"><svg><use href="#play"/></svg> Послушать</button>
+      </div>
+    </div>
+
+    <div class="hero-cards" aria-hidden="false">
+      <div class="hc hc-ring tilt" data-r>
+        <svg class="ring" viewBox="0 0 80 80"><circle cx="40" cy="40" r="33"/><circle class="arc" cx="40" cy="40" r="33"/></svg>
+        <svg class="mk"><use href="#mark"/></svg>
+      </div>
+      <div class="hc hc-peach tilt" data-r>
+        <span class="tiny-badge">3D</span>
+        <b class="num" data-count="26">0</b>
+        <span>предметов<br>на карте</span>
+        <i class="stars">★★★★★</i>
+      </div>
+      <div class="hc hc-yellow tilt" data-r>
+        <span class="eyebrow">Alterna · Mutfak</span>
+        <b class="num big"><span data-count="167">0</span><sup>🔊</sup></b>
+        <span>озвученных слов и фраз</span>
+        <div class="stripes" style="--p:.72"><i></i></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ KOLAAAY BANNER ============ -->
+<section class="wrap">
+  <div class="banner" data-r>
+    <img class="blob b2" src="media/star-yellow.webp" alt="" aria-hidden="true">
+    <h2 class="display banner-h">Mutfakta Türkçe?<br><span class="kolay" aria-label="Kolaaaay.">Kol<span class="aa"><i>a</i><i>a</i><i>a</i><i>a</i></span>y.</span></h2>
+    <div class="banner-side">
+      <div class="mini-card">
+        <b>26</b><span>слов за 10 минут</span>
+        <div class="stripes dark" style="--p:1"><i></i></div>
+      </div>
+      <button class="pill" data-say="x-kolay"><svg><use href="#play"/></svg> Mutfakta Türkçe? Kolay.</button>
+    </div>
+    <div class="banner-foot"><span class="logo sm"><svg><use href="#mark"/></svg><b>Alterna</b></span><span class="caps">Timur · A0 → C1</span></div>
+  </div>
+</section>
+
+<!-- ============ STORY 1: ÇAYDANLIK ============ -->
+<section class="sec" id="story">
+  <div class="wrap two">
+    <div>
+      <p class="eyebrow" data-r>История № 1 · тред</p>
+      <h2 class="display h2" data-r>Двухэтажный чайник</h2>
+      <div class="thread">
+        <article class="post" data-r>
+          <header><span class="ava">T</span><b>timur.alterna</b><time>1/4</time></header>
+          <p>У меня была общага. В общаге была кухня. На кухне стоял чайник. Двухэтажный.</p>
+          <p>Мне девятнадцать. Я приехал в Анталью из Шымкента. Мой турецкий — «merhaba» и «teşekkürler».</p>
+          <p>Первый вечер. Хочу чай. Вижу на плите два чайника. Один стоит на другом.</p>
+          <p>Думаю, турки экономят место.</p>
+        </article>
+        <article class="post" data-r>
+          <header><span class="ava">T</span><b>timur.alterna</b><time>2/4</time></header>
+          <p>Снимаю верхний. Наливаю воду. Ставлю на огонь. Жду.</p>
+          <p>Заходит сосед Эмре. Смотрит на меня. Смотрит на чайник. Говорит, <button class="say-inline" data-say="x-ne-yapiyorsun">Ne yapıyorsun?</button></p>
+          <p>Говорю, <button class="say-inline" data-say="x-cay">çay</button>.</p>
+          <p>Эмре говорит, <button class="say-inline" data-say="x-abi-o-demlik">Abi, o demlik.</button></p>
+        </article>
+        <article class="post" data-r>
+          <header><span class="ava">T</span><b>timur.alterna</b><time>3/4</time></header>
+          <p>Говорю, что такое demlik. Эмре объясняет.</p>
+          <p>Снизу <button class="say-inline" data-say="caydanlik">çaydanlık</button> — там кипяток. Сверху <button class="say-inline" data-say="demlik">demlik</button> — там заварка. Пар от нижнего греет верхний.</p>
+          <p>Два этажа. Одна система.</p>
+          <p>Я двадцать минут кипятил заварочник.</p>
+        </article>
+        <article class="post" data-r>
+          <header><span class="ava">T</span><b>timur.alterna</b><time>4/4</time></header>
+          <p>Эмре заварил чай. Налил в стаканчик без ручки. Я взял за стенки. Обжёгся.</p>
+          <p>Эмре говорит, за ободок держи. Сверху.</p>
+          <p>Говорю, а ручку приделать нельзя было?</p>
+          <p>Эмре говорит, abi, это <button class="say-inline" data-say="cay-bardagi">çay bardağı</button>. У него нет ручки. У него есть традиция.</p>
+          <p class="coda">Двухэтажный чайник я, кстати, потом купил себе. Верхний больше не кипячу.</p>
+        </article>
+      </div>
+    </div>
+
+    <div class="sticky-col">
+      <div class="teapot-card" data-r>
+        <p class="eyebrow">Нажми на этаж</p>
+        <svg class="teapot" viewBox="0 0 260 300" role="img" aria-label="Турецкий двухэтажный чайник">
+          <g class="steam" aria-hidden="true">
+            <path d="M120 40c-10-12 10-18 0-32"/><path d="M140 44c-10-12 10-18 0-32"/>
+          </g>
+          <g class="part" data-say="demlik" tabindex="0" role="button" aria-label="demlik — заварочный чайник">
+            <path class="body" d="M92 118c0-26 18-44 38-44s38 18 38 44l-6 22H98z"/>
+            <path class="spout" d="M166 108l34-20 4 6-28 26z"/>
+            <circle class="knob" cx="130" cy="70" r="8"/>
+            <path class="handle" d="M92 96c-22 0-26 34 2 38" fill="none"/>
+            <text x="130" y="116" text-anchor="middle">demlik</text>
+          </g>
+          <g class="part" data-say="caydanlik" tabindex="0" role="button" aria-label="çaydanlık — чайник для кипятка">
+            <path class="body low" d="M64 196c0-36 30-56 66-56s66 20 66 56v52c0 12-8 20-20 20H84c-12 0-20-8-20-20z"/>
+            <path class="spout" d="M194 190l44-24 6 8-44 36z"/>
+            <path class="handle" d="M78 150c0-26 104-26 104 0" fill="none"/>
+            <text x="130" y="222" text-anchor="middle">çaydanlık</text>
+          </g>
+          <rect class="flame" x="70" y="276" width="120" height="10" rx="5"/>
+        </svg>
+        <div class="glass-row">
+          <button class="glass" data-say="cay-bardagi" aria-label="çay bardağı">
+            <svg viewBox="0 0 60 80"><path class="tea" d="M16 18h28l-6 22 6 22H16l6-22z"/><path class="gl" d="M14 12h32l-7 28 7 26H14l7-26z"/><rect class="saucer" x="4" y="68" width="52" height="7" rx="3.5"/></svg>
+            <span><b>çay bardağı</b>держат за ободок</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 3D MAP ============ -->
+<section class="sec" id="map">
+  <div class="wrap">
+    <p class="eyebrow" data-r>Карта · 26 предметов · озвучка</p>
+    <div class="map-head">
+      <h2 class="display h2" data-r>Нажми на всё.<br>Кухня ответит.</h2>
+      <p class="lead sm" data-r>Холодильник скажет <b>buzdolabı</b>, плита — <b>ocak</b>. Тяни пальцем влево-вправо: кухня крутится, а страница по-прежнему листается.</p>
+    </div>
+
+    <div class="kitchen labels" id="kitchen" data-r>
+      <div class="k-canvas"></div>
+      <div class="k-pins"></div>
+      <div class="k-top">
+        <button class="chip on" id="kLabels" aria-pressed="true">Подписи</button>
+        <button class="chip" id="kGame" aria-pressed="false">🎯 Найди на кухне</button>
+        <span class="chip ghosty" id="kHeard">🔊 0/26</span>
+      </div>
+      <div class="k-ctrl" aria-label="Управление камерой">
+        <button id="kRotL" aria-label="Повернуть влево">⟲</button>
+        <button id="kZoomIn" aria-label="Приблизить">+</button>
+        <button id="kZoomOut" aria-label="Отдалить">−</button>
+        <button id="kRotR" aria-label="Повернуть вправо">⟳</button>
+        <button id="kReset" aria-label="Сбросить вид">⌂</button>
+      </div>
+      <div class="k-hint" aria-hidden="true"><span class="hand">👆</span> тяни ↔ · нажимай</div>
+      <div class="k-loading">Собираем кухню…</div>
+      <div class="k-nogl">3D не запустилось на этом устройстве. Все слова ниже — нажимай, они тоже говорят.</div>
+
+      <div class="k-card" id="kCard" aria-live="polite">
+        <div class="kc-empty">
+          <p class="eyebrow">Mutfak · кухня</p>
+          <p>Нажми на любой предмет — услышишь, как он звучит по-турецки.</p>
+        </div>
+        <div class="kc-full">
+          <div class="kc-row">
+            <div>
+              <p class="kc-ru" id="kcRu">холодильник</p>
+              <h3 class="kc-tr" id="kcTr">buzdolabı</h3>
+              <p class="kc-pr">[<span id="kcPr">буздолабы</span>]</p>
+            </div>
+            <span class="kc-count"><b id="kcN">1</b><small>/26</small></span>
+          </div>
+          <div class="wave" id="kWave" aria-hidden="true"></div>
+          <p class="kc-note" id="kcNote"></p>
+          <button class="kc-ex" id="kcEx"><svg><use href="#play"/></svg><span><b id="kcExTr"></b><small id="kcExRu"></small></span></button>
+          <div class="kc-btns">
+            <button class="pill sm" id="kcAgain"><svg><use href="#play"/></svg> Ещё раз</button>
+            <button class="pill sm light" id="kcSlow">🐢 Медленно</button>
+          </div>
+        </div>
+        <div class="kc-game">
+          <p class="eyebrow">Раунд <span id="gRound">1</span>/10 · очки <span id="gScore">0</span></p>
+          <p class="kc-ask">Найди: <button class="say-inline big" id="gWord">…</button></p>
+          <p class="kc-msg" id="gMsg">Слушай и нажимай на предмет.</p>
+          <div class="kc-btns"><button class="pill sm" id="gRepeat"><svg><use href="#play"/></svg> Повторить</button><button class="pill sm light" id="gSkip">Пропустить</button></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="words-head">
+      <h3 class="h3" data-r>Все 26 слов</h3>
+      <p class="mute" data-r>Нажми на карточку — предмет подсветится на карте.</p>
+    </div>
+    <div class="words" id="words"></div>
+  </div>
+</section>
+
+<!-- ============ GRAMMAR ============ -->
+<section class="sec" id="grammar">
+  <div class="wrap">
+    <p class="eyebrow" data-r>Конструктор</p>
+    <h2 class="display h2" data-r>Турки не выдумывали слова.<br>Они их собирали.</h2>
+    <div class="dan-lines" data-r>
+      <p>Холодильник — ледяной шкаф.</p>
+      <p>Солонка — соляница.</p>
+      <p>Микроволновка — микроволна.</p>
+      <p>Тебе дали кубики. Собирай.</p>
+    </div>
+
+    <!-- compounds -->
+    <div class="lab lab-cream" data-r>
+      <div class="lab-copy">
+        <span class="tag">01 · Слово + слово</span>
+        <h3 class="h3">Ледяной шкаф</h3>
+        <p>Второе слово получает окончание <b>-ı / -i / -u / -ü</b> (после гласной — <b>-sı / -si / -su / -sü</b>). Глухая на конце может смягчиться: p → b, k → ğ.</p>
+        <div class="chips" id="cmpChips"></div>
+      </div>
+      <div class="lab-stage cmp-stage" id="cmpStage" aria-live="polite">
+        <div class="cmp-blocks"><span class="blk a" id="cmpA">buz</span><span class="plus">+</span><span class="blk b" id="cmpB">dolap</span></div>
+        <div class="cmp-glue" id="cmpGlue">p → b, + ı</div>
+        <button class="cmp-out" id="cmpOut"><svg><use href="#play"/></svg><b id="cmpForm">buzdolabı</b><small id="cmpRu">холодильник</small></button>
+      </div>
+    </div>
+
+    <!-- -lık -->
+    <div class="lab lab-yellow" data-r>
+      <div class="lab-copy">
+        <span class="tag">02 · Суффикс -lık</span>
+        <h3 class="h3">Штука для…</h3>
+        <p><b>-lık</b> превращает «что» в «штуку для этого». Гласная внутри суффикса подстраивается под последнюю гласную слова: <b>a, ı → ı</b> · <b>e, i → i</b> · <b>o, u → u</b> · <b>ö, ü → ü</b>.</p>
+        <div class="chips" id="likChips"></div>
+      </div>
+      <div class="lab-stage lik-stage" aria-live="polite">
+        <div class="lik-machine">
+          <span class="blk" id="likBase">tuz</span>
+          <span class="blk suf">l<span class="slot" id="likSlot"><i>ı</i></span>k</span>
+        </div>
+        <button class="cmp-out" id="likOut"><svg><use href="#play"/></svg><b id="likForm">tuzluk</b><small id="likRu">солонка</small></button>
+      </div>
+    </div>
+
+    <!-- locative -->
+    <div class="lab lab-peach" data-r>
+      <div class="lab-copy">
+        <span class="tag">03 · Где лежит?</span>
+        <h3 class="h3"><button class="say-inline" data-say="x-nerede">Nerede?</button> — где?</h3>
+        <p>«В / на» — это не предлог, а хвост: <b>-da / -de</b>. После глухих согласных — <b>-ta / -te</b>. Глухие легко запомнить фразой <b class="fs">Fıstıkçı Şahap</b> — «фисташковый Шахап»: <span class="fs-letters" id="fsLetters"></span></p>
+        <p class="lab-q">Что?</p>
+        <div class="chips" id="locThings"></div>
+        <p class="lab-q">Где?</p>
+        <div class="chips" id="locPlaces"></div>
+      </div>
+      <div class="lab-stage loc-stage" aria-live="polite">
+        <p class="loc-q" id="locQ">Süt nerede?</p>
+        <button class="loc-a" id="locA"><svg><use href="#play"/></svg><span id="locSentence">Süt buzdolabı<em>nda</em>.</span></button>
+        <p class="loc-ru" id="locRu">Молоко в холодильнике.</p>
+        <p class="loc-why" id="locWhy"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PHRASES + STORY 2 ============ -->
+<section class="sec" id="phrases">
+  <div class="wrap two rev">
+    <div>
+      <p class="eyebrow" data-r>История № 2 · тред</p>
+      <h2 class="display h2" data-r>Здоровья вашим рукам</h2>
+      <div class="thread">
+        <article class="post" data-r>
+          <header><span class="ava">T</span><b>timur.alterna</b><time>1/3</time></header>
+          <p>У меня была соседка. Тётя Айше. Она готовила менемен так, что пахло на весь этаж.</p>
+          <p>Однажды постучала. Протянула тарелку. Говорит, <button class="say-inline" data-say="x-al-ye">Al, ye.</button> Бери, ешь.</p>
+          <p>Я съел. Помыл тарелку. Отнёс. Говорю, <button class="say-inline" data-say="x-tesekkur">Teşekkür ederim.</button></p>
+        </article>
+        <article class="post" data-r>
+          <header><span class="ava">T</span><b>timur.alterna</b><time>2/3</time></header>
+          <p>Тётя Айше смотрит на меня, как будто я сказал «ну, нормально».</p>
+          <p>Говорит, oğlum, так не говорят. Говорят <button class="say-inline" data-say="elinize-saglik">Elinize sağlık.</button></p>
+          <p>Говорю, что. Она говорит, «здоровья вашим рукам». Тому, кто готовил, — только так.</p>
+          <p>А повар тебе отвечает <button class="say-inline" data-say="afiyet-olsun">Afiyet olsun.</button></p>
+        </article>
+        <article class="post" data-r>
+          <header><span class="ava">T</span><b>timur.alterna</b><time>3/3</time></header>
+          <p>Я повторил. Elinize sağlık. Тётя Айше расцвела.</p>
+          <p>Через день принесла ещё тарелку. Потом ещё.</p>
+          <p>Тарелку, кстати, пустой не возвращают. Это я узнал на третьей.</p>
+          <p class="coda">Менемен был с луком. Об этом в Турции спорят до сих пор.</p>
+        </article>
+      </div>
+    </div>
+    <div class="sticky-col">
+      <div class="sky-card" data-r>
+        <img src="media/sky.webp" alt="" aria-hidden="true" loading="lazy">
+        <div class="sky-stack">
+          <div class="tile-mark"><svg><use href="#mark"/></svg></div>
+          <button class="sky-say" data-say="elinize-saglik"><span class="eyebrow">Тому, кто готовил</span><b>Elinize sağlık!</b><small>Здоровья вашим рукам</small></button>
+          <button class="sky-say peach" data-say="afiyet-olsun"><span class="eyebrow">Тому, кто ест</span><b>Afiyet olsun!</b><small>Приятного аппетита</small></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <article class="post solo" data-r>
+      <header><span class="ava">T</span><b>timur.alterna</b><time>бонус</time></header>
+      <p>У меня было молоко. Молоко стояло на плите. Я стоял в телефоне.</p>
+      <p>Эмре кричит из коридора: <button class="say-inline" data-say="sut-tasti">Süt taştı!</button></p>
+      <p>Говорю, что тошты. Он говорит, taştı. Перелилось. Убежало.</p>
+      <p>Прибегаю. Молоко на плите, на полу, на тапке. Эмре говорит, <button class="say-inline" data-say="x-ocagi-kapat">Ocağı kapat.</button> Выключи плиту.</p>
+      <p class="coda">Плиту я, кстати, отмывал до ночи. Зато taşmak запомнил навсегда.</p>
+    </article>
+
+    <div class="phr-head">
+      <h3 class="h3" data-r>12 фраз, за которые зовут на ужин ещё раз</h3>
+    </div>
+    <div class="phrases" id="phraseGrid"></div>
+  </div>
+</section>
+
+<!-- ============ QUIZ ============ -->
+<section class="sec" id="quiz">
+  <div class="wrap">
+    <div class="quiz" data-r>
+      <aside class="quiz-side">
+        <span class="logo sm"><svg><use href="#mark"/></svg><b>Alterna</b></span>
+        <h2 class="display h2">Тест<br>на кухню</h2>
+        <div class="q-ring"><svg viewBox="0 0 80 80"><circle cx="40" cy="40" r="33"/><circle class="arc" id="qArc" cx="40" cy="40" r="33"/></svg><b id="qPct">0%</b></div>
+        <div class="q-stats"><div><b id="qOk">0</b><small>верно</small></div><div><b id="qBad">0</b><small>ошибки</small></div><div><b id="qLeft">8</b><small>осталось</small></div></div>
+      </aside>
+      <div class="quiz-main" id="quizMain" aria-live="polite"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PLATFORM (ADS) ============ -->
+<section class="sec platform" id="platform">
+  <div class="wrap">
+    <p class="eyebrow" data-r>Не дочитывай, если уже всё знаешь</p>
+    <h2 class="display h2" data-r>Ты уже начал.<br>Это видно.</h2>
+
+    <div class="progress-card" data-r>
+      <div class="pc-top">
+        <div><b>Mutfak · кухня</b><small id="pcSub">Ты прослушал 0 из 26 слов</small></div>
+        <div class="pc-big"><span id="pcHeard">0</span><small>/26</small></div>
+      </div>
+      <div class="pc-tabs"><span class="on">Лексика</span><span>Грамматика</span><span>Экзамены</span></div>
+      <div class="stripes big" id="pcBar" style="--p:0"><i></i></div>
+      <div class="pc-foot"><span>● Блок 1 из 131</span><span>ещё 130 тем</span></div>
+    </div>
+    <div class="dan-lines" data-r>
+      <p>Кухня — это одна тема. В платформе их сто тридцать одна.</p>
+      <p>Больница. Ресторан. Дорога. Банк. Семья. Отпуск.</p>
+      <p>Кухня там, кстати, тоже есть. Вот она.</p>
+    </div>
+
+    <figure class="shot-frame" data-r>
+      <div class="shot-bar"><i></i><i></i><i></i><span>Alterna · Лексика</span></div>
+      <div class="shot-img">
+        <img src="media/nt-kitchen.webp" alt="Раздел «Лексика» в платформе Alterna: темы Отпуск, Смартфон, На природе, Дома, На кухне, В санузле, В гостиной, На балконе, В спальне" loading="lazy">
+        <span class="shot-ring" style="--x:31.5%;--y:37%;--w:29.3%;--h:30%"></span>
+        <span class="shot-tip" style="--x:46%;--y:70%">вот эта</span>
+      </div>
+      <figcaption>Настоящий скриншот платформы. Тема «На кухне» — одна из 131.</figcaption>
+    </figure>
+
+    <!-- choose your path -->
+    <div class="adventure" data-r>
+      <div class="adv-copy">
+        <p class="small-copy">Турецкий нужен всем по-разному. Кому-то — заказать чай на пляже. Кому-то — сдать TÖMER. Кому-то — не молчать на работе.</p>
+        <h3 class="display h2">Выбери свой сценарий</h3>
+      </div>
+      <div class="adv-list" id="advList">
+        <details class="adv" open>
+          <summary><span class="adv-ic">🏖</span>Я еду в Турцию</summary>
+          <div class="adv-body"><p><b>131 блок лексики по темам</b> — не списки слов, а то, что реально говорят: еда, ресторан, дорога, отпуск, больница, дом.</p><p>Плюс диалоги и аудирование — чтобы понимать ответ, а не только задавать вопрос.</p></div>
+        </details>
+        <details class="adv">
+          <summary><span class="adv-ic">🎓</span>Я учусь или поступаю</summary>
+          <div class="adv-body"><p><b>128 гайдов по грамматике</b> — разобраны как этот: истории, конструкторы, без «откройте страницу 42».</p><p><b>32 блока по экзаменам</b> — A1, A2, B1, B2, C1, по каждому отдельно. Автор сам прошёл TÖMER до C1.</p></div>
+        </details>
+        <details class="adv">
+          <summary><span class="adv-ic">💼</span>Я ищу работу или уже работаю</summary>
+          <div class="adv-body"><p><b>36 гайдов по работе</b> — для тех, кто ищет или уже пашет: собеседование, переписка, созвоны, коллеги.</p></div>
+        </details>
+        <details class="adv">
+          <summary><span class="adv-ic">🍿</span>Я хочу смотреть сериалы без субтитров</summary>
+          <div class="adv-body"><p><b>1716 материалов по уровням</b>: фильмы, книги, мультики, подкасты, приложения, YouTube. Открываешь свой уровень и берёшь.</p></div>
+        </details>
+        <details class="adv">
+          <summary><span class="adv-ic">🌱</span>Я начинаю с нуля</summary>
+          <div class="adv-body"><p>Маршрут A0 → C1 по ступеням. Первая — фундамент: алфавит, гармония гласных, первые 500 слов.</p><p><b>109 интерактивных ресурсов</b>: слова, тексты, диалоги, аудирование, игры на запоминание.</p></div>
+        </details>
+      </div>
+    </div>
+  </div>
+
+  <!-- more resources -->
+  <div class="marquee" aria-hidden="true"><div class="mq-in"><span>Что внутри <svg><use href="#arrow"/></svg></span><span>Что внутри <svg><use href="#arrow"/></svg></span><span>Что внутри <svg><use href="#arrow"/></svg></span><span>Что внутри <svg><use href="#arrow"/></svg></span><span>Что внутри <svg><use href="#arrow"/></svg></span><span>Что внутри <svg><use href="#arrow"/></svg></span></div></div>
+
+  <div class="wrap" id="resources">
+    <div class="res-grid">
+      <article class="res y" data-r>
+        <div class="res-ic">📘</div>
+        <h3>Грамматика: 128 гайдов</h3>
+        <p>Как этот сайт, только про всё: падежи, времена, суффиксы. С тренажёрами.</p>
+        <div class="res-vid"><video muted playsinline loop preload="none" poster="media/grammar.jpg" data-src="media/grammar.mp4"></video></div>
+      </article>
+      <article class="res b" data-r>
+        <div class="res-ic">📺</div>
+        <h3>Мультфильмы и фильмы</h3>
+        <p>Каталог по уровням: с какого начать, где смотреть, что понятно с первого раза.</p>
+        <div class="res-vid"><video muted playsinline loop preload="none" poster="media/cartoons.jpg" data-src="media/cartoons.mp4"></video></div>
+      </article>
+      <article class="res p" data-r>
+        <div class="res-ic">📱</div>
+        <h3>Приложения: связка, а не зоопарк</h3>
+        <p>Какие сервисы реально двигают турецкий и в каком порядке их брать.</p>
+        <div class="res-vid"><video muted playsinline loop preload="none" poster="media/apps.jpg" data-src="media/apps.mp4"></video></div>
+      </article>
+      <article class="res c" data-r>
+        <div class="res-ic">🎧</div>
+        <h3>Подкасты по уровням</h3>
+        <p>Турецкий в наушниках: в дороге, в зале, пока моешь посуду.</p>
+        <div class="res-vid"><video muted playsinline loop preload="none" poster="media/podcasts.jpg" data-src="media/podcasts.mp4"></video></div>
+      </article>
+    </div>
+
+    <div class="phones-head">
+      <h3 class="h3" data-r>Так это выглядит в телефоне</h3>
+      <p class="mute" data-r>Реальные экраны платформы. Листай →</p>
+    </div>
+  </div>
+  <div class="phones" id="phones">
+    <figure class="phone"><img src="media/ph1961.webp" alt="Маршрут от нуля до свободного турецкого" loading="lazy"><figcaption>Маршрут A0 → C1</figcaption></figure>
+    <figure class="phone"><img src="media/ph1921.webp" alt="Каталог видео по уровням" loading="lazy"><figcaption>Видео по уровням</figcaption></figure>
+    <figure class="phone"><img src="media/ph1932.webp" alt="Мультфильмы на турецком" loading="lazy"><figcaption>Мультфильмы</figcaption></figure>
+    <figure class="phone"><img src="media/ph1946.webp" alt="Книги на турецком" loading="lazy"><figcaption>Книги</figcaption></figure>
+    <figure class="phone"><img src="media/ph1951.webp" alt="Подкасты на турецком" loading="lazy"><figcaption>Подкасты</figcaption></figure>
+    <figure class="phone"><img src="media/ph1956.webp" alt="Приложения и сервисы" loading="lazy"><figcaption>Приложения</figcaption></figure>
+    <figure class="phone"><img src="media/ph1928.webp" alt="Личный кабинет" loading="lazy"><figcaption>Личный кабинет</figcaption></figure>
+  </div>
+
+  <div class="wrap">
+    <!-- zero -->
+    <div class="zero-grid" data-r>
+      <div class="zg sky"><img src="media/sky2.webp" alt="" aria-hidden="true" loading="lazy"></div>
+      <div class="zg main"><span class="caps">Серьёзно</span><b class="display zero">0</b><span>«откройте страницу 42»</span></div>
+      <div class="zg"><span class="caps">Уже собрано</span><b class="display"><span data-count="1716">0</span></b><span>материалов по уровням</span></div>
+      <div class="zg"><span class="caps">Один раз</span><b class="display">$30</b><span>без подписки</span></div>
+      <div class="zg"><span class="caps">Навсегда</span><b class="display">∞</b><span>доступ не сгорает</span></div>
+    </div>
+
+    <!-- calculator -->
+    <div class="calc" data-r>
+      <div class="calc-copy">
+        <p class="eyebrow">Честная арифметика</p>
+        <h3 class="h3">Сколько ты тратишь на поиск?</h3>
+        <p>Что учить. Где смотреть. Какое приложение. Какой уровень. Двигай ползунок — сколько минут в день уходит на это, а не на турецкий.</p>
+        <label class="range"><input type="range" id="calcMin" min="5" max="60" step="5" value="20" aria-label="Минут в день на поиск"><span><b id="calcMinV">20</b> мин в день</span></label>
+      </div>
+      <div class="calc-out">
+        <div class="co"><b id="calcHours">122</b><small>часа в год на поиск</small></div>
+        <div class="co"><b id="calcDays">15</b><small>рабочих дней</small></div>
+        <div class="co y"><b>8¢</b><small>в день стоит платформа в первый год. Дальше — 0.</small></div>
+      </div>
+    </div>
+
+    <!-- author -->
+    <div class="author" data-r>
+      <div class="au-quote">
+        <span class="logo sm"><svg><use href="#mark"/></svg><b>Alterna</b></span>
+        <blockquote>
+          <p>Меня зовут Тимур. Мне двадцать два. Я из Шымкента.</p>
+          <p>Год я просидел в TÖMER. Потом поступил в Akdeniz — электротехника, второй курс.</p>
+          <p>Всё, что я искал сам, я сложил в одно место.</p>
+          <p><b>Чтобы ты не искал.</b></p>
+        </blockquote>
+        <p class="au-name">Тимур Ахметов<br><small>автор Alterna Timur A0 → C1 · Анталья</small></p>
+      </div>
+      <div class="au-sky">
+        <img src="media/sky.webp" alt="" aria-hidden="true" loading="lazy">
+        <div class="au-stack">
+          <div class="tile-mark"><svg><use href="#mark"/></svg></div>
+          <div class="badge-card peach"><b>C1</b><small>TÖMER · турецкий</small><i>★★★★★</i></div>
+          <div class="badge-card"><b>7.5</b><small>IELTS · английский</small></div>
+          <div class="badge-card y"><b>4</b><small>языка: турецкий, казахский, русский, английский</small></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- final -->
+    <div class="final" id="final" data-r>
+      <div class="final-card">
+        <p class="caps">Не жди, пока süt taşar</p>
+        <div class="dan-lines tight">
+          <p>У меня была кухня. На кухне было 26 слов.</p>
+          <p id="finalHeard">Ты их только что прослушал.</p>
+          <p>Дальше — 130 тем. 128 гайдов. 1716 материалов.</p>
+          <p>Всё уже собрано. Искать не надо.</p>
+        </div>
+        <h2 class="display h-final">Забери весь турецкий сразу</h2>
+        <ol class="offer">
+          <li><b>128</b> гайдов по грамматике — разбор как здесь</li>
+          <li><b>131</b> блок лексики — то, что реально говорят</li>
+          <li><b>109</b> интерактивных ресурсов — слова, тексты, диалоги, игры</li>
+          <li><b>32</b> блока по экзаменам — A1, A2, B1, B2, C1</li>
+          <li><b>36</b> гайдов по работе — для тех, кто ищет или уже пашет</li>
+          <li><b>1716</b> материалов по уровням — фильмы, книги, подкасты, YouTube</li>
+        </ol>
+        <p class="price"><b>$30.</b> Один раз. Доступ навсегда.</p>
+        <a class="big-btn y" href="https://app.lava.top/products/2cdbb9f8-e65b-443e-8d2c-4fea4c121e41" target="_blank" rel="noopener" data-cta="final"><svg><use href="#mark"/></svg> Получить доступ — $30</a>
+        <a class="big-btn p" href="#resources"><svg><use href="#play"/></svg> Сначала посмотреть, что внутри</a>
+        <p class="coda final-coda">Платформу я, кстати, не закрыл.</p>
+      </div>
+      <div class="final-art">
+        <img class="blob b3" src="media/star-peach.webp" alt="" aria-hidden="true" loading="lazy">
+        <div class="dash">
+          <div class="dash-side"><span class="logo sm"><svg><use href="#mark"/></svg><b>Alterna</b></span><i></i><i></i><i></i><i></i><i></i></div>
+          <div class="dash-main">
+            <b class="dash-h">Alterna Timur<br>A0 → C1</b>
+            <div class="dash-cells">
+              <span class="y"><b>128</b>гайдов</span><span class="p"><b>131</b>тема</span><span class="b"><b>109</b>ресурсов</span>
+              <span class="p"><b>32</b>экзамены</span><span class="b"><b>36</b>работа</span><span class="y"><b>1716</b>материалов</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <p class="foot-h display">Турецкий<br>на кухне</p>
+        <a class="logo xl" href="#top"><svg><use href="#mark"/></svg><b>Alterna</b></a>
+      </div>
+      <div class="foot-links">
+        <a href="#map">3D-кухня</a><a href="#story">Истории</a><a href="#grammar">Конструктор</a><a href="#phrases">Фразы</a><a href="#quiz">Тест</a>
+        <a href="https://app.lava.top/products/2cdbb9f8-e65b-443e-8d2c-4fea4c121e41" target="_blank" rel="noopener">Платформа A0 → C1 ↗</a>
+      </div>
+    </div>
+    <p class="foot-note">Озвучка — синтезированный голос Yelda (macOS), не запись живого человека. Истории написаны в жанре тредов по мотивам жизни автора в Анталье. Скриншоты и видео — реальные экраны платформы Alterna.</p>
+  </div>
+</footer>
+
+<div class="sticky-cta" id="stickyCta" aria-hidden="true">
+  <span><b>Вся платформа A0 → C1</b><small>$30 · один раз · навсегда</small></span>
+  <a class="pill y" href="https://app.lava.top/products/2cdbb9f8-e65b-443e-8d2c-4fea4c121e41" target="_blank" rel="noopener" data-cta="sticky" tabindex="-1">Получить</a>
+</div>
+
+<canvas id="confetti" aria-hidden="true"></canvas>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+<script type="module" src="kitchen3d.js"></script>
+</body>
+</html>
